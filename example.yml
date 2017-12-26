@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  vars:
+    - java_packages:
+        - java-1.8.0-openjdk-devel
+  roles:
+    - gaol.java

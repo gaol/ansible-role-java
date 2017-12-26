@@ -1,0 +1,4 @@
+---
+- name: Install Java Packages
+  package: "name={{ item }} state=installed"
+  with_items: "{{ java_packages }}"
