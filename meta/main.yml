@@ -3,7 +3,7 @@ dependencies: []
 
 galaxy_info:
   author: gaol
-  description: "Role to install basic Java packages for developments"
+  description: "Role to simply install defined packages"
   company: "Red Hat"
   license: "ASL 2.0"
   min_ansible_version: 2.0
@@ -19,4 +19,4 @@ galaxy_info:
       versions:
       - all
   galaxy_tags:
-    - java
+    - package

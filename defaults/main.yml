@@ -1,6 +1,17 @@
 ---
 
-java_packages:
-  - java-1.8.0-openjdk-devel
-  - maven
-  - gradle
+yum_repo_urls: []
+
+yum_repo_key_urls: []
+
+prerequisite_packages: []
+
+prerequisite_services: []
+
+prerequisite_scripts: []
+
+to_be_installed_packages: []
+
+started_services: []
+
+run_scripts: []

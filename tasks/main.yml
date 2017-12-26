@@ -1,4 +1,40 @@
 ---
-- name: Install Java Packages
+
+- name: Downloads some pre defined yum repos
+  get_url:
+    url: {{ item }}
+    dest: /etc/yum.repos.d/
+  with_items: "{{ yum_repo_urls }}"
+  when: ansible_os_family == 'RedHat'
+
+- name: Downloads some pre defined yum repos
+  rpm_key:
+    key: {{ item }}
+    state: present
+  with_items: "{{ yum_repo_key_urls }}"
+  when: ansible_os_family == 'RedHat'
+
+- name: Install prerequisite packages
   package: "name={{ item }} state=installed"
-  with_items: "{{ java_packages }}"
+  with_items: "{{ prerequisite_packages }}"
+
+- name: Start some services after prerequisite packages are installed
+  service: "name={{ item }} state=started"
+  with_items: "{{ prerequisite_services }}"
+
+- name: Run some scripts after prerequisite packages are installed and some services are started
+  script: "{{ item }}"
+  with_items: "{{ prerequisite_scripts }}"
+
+- name: Install needed packages
+  package: "name={{ item }} state=installed"
+  with_items: "{{ to_be_installed_packages }}"
+
+- name: Start some services after packages are installed
+  service: "name={{ item }} state=started"
+  with_items: "{{ started_services }}"
+
+- name: Run some scripts after packages are installed and services are started
+  script: "{{ item }}"
+  with_items: "{{ run_scripts }}"
+

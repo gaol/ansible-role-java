@@ -3,7 +3,16 @@
   become: yes
   become_user: root
   vars:
-    - java_packages:
+    - prerequisite_packages:
+        - epel-release
+
+    - to_be_installed_packages:
         - java-1.8.0-openjdk-devel
+        - maven
+        - docker
+
+    - started_services:
+        - docker
+
   roles:
-    - gaol.java
+    - gaol.package
