@@ -2,14 +2,14 @@
 
 - name: Downloads some pre defined yum repos
   get_url:
-    url: {{ item }}
-    dest: /etc/yum.repos.d/
+    url: "{{ item }}"
+    dest: "/etc/yum.repos.d/"
   with_items: "{{ yum_repo_urls }}"
   when: ansible_os_family == 'RedHat'
 
 - name: Downloads some pre defined yum repos
   rpm_key:
-    key: {{ item }}
+    key: "{{ item }}"
     state: present
   with_items: "{{ yum_repo_key_urls }}"
   when: ansible_os_family == 'RedHat'

@@ -1,0 +1,32 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  vars:
+    yum_repo_urls:
+      - https://pkg.jenkins.io/redhat/jenkins.repo
+
+    yum_repo_key_urls:
+      - https://pkg.jenkins.io/redhat/jenkins.io.key
+
+    prerequisite_packages:
+      - epel-release
+
+    prerequisite_services: []
+
+    prerequisite_scripts:
+      - dummy_1.sh
+
+    to_be_installed_packages:
+      - java-1.8.0-openjdk-devel
+      - maven
+      - docker
+
+    started_services:
+      - docker
+
+    run_scripts:
+      - dummy_2.sh
+
+  roles:
+    - gaol.package
