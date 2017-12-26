@@ -47,7 +47,7 @@ In many cases, some services need to be started after package installation, just
     
         prerequisite_services: []
     
-        prerequisite_scripts:
+        scripts_after_pre_services_started:
           - dummy_1.sh
     
         to_be_installed_packages:
@@ -58,10 +58,9 @@ In many cases, some services need to be started after package installation, just
         started_services:
           - docker
     
-        run_scripts:
+        scripts_after_services_started:
           - dummy_2.sh
     
       roles:
         - gaol.package
-
 
