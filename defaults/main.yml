@@ -1,22 +1,54 @@
 ---
 
+# yum repo urls to be downlowed to '/etc/yum.repos.d/'
+# step 1.1
 yum_repo_urls: []
 
+# rpm keys to be installed for RPM based package managers
+# step 1.2
 yum_repo_key_urls: []
 
-prerequisite_packages: []
+# some repo files need to be elaborated instead of downloading from internet
+# step 1.3
+pre_configs: []
 
-scripts_before_pre_services_started: []
+# pre packages to be installed
+# step 2.1
+pre_packages: []
 
-prerequisite_services: []
+# some configurations need to be done after packages are installed
+# step 2.2
+pre_configs_after_install: []
 
-scripts_after_pre_services_started: []
+# another chance to do some scripts before pre services are started
+# step 2.3
+scripts_before_pre_services: []
 
+# services to be started in first stage
+# step 2.4
+pre_services: []
+
+# scripts to be executed after prerequiste services are started, but before second stage happens
+# step 2.5
+scripts_after_pre_services: []
+
+# to be installed packages
+# step 3.1
 to_be_installed_packages: []
 
+# configurations after packages are installed
+# step 3.2
+configs_after_install: []
+
+# scripts to be executed before services are started
+# step 3.3
 scripts_before_services_started: []
 
+# services need to be started
+# step 3.4
 started_services: []
 
+# scripts to be executed after services are started
+# step 3.5
 scripts_after_services_started: []
 

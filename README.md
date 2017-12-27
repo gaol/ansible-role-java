@@ -21,7 +21,7 @@ In RPM based package manager, `some-yum.repo` may need to be installed first, an
 
 In Fedora and CentOS, `epel-release` is a special package which needs to be installed before some other packages can be installed, such packages can be defined in:
 
-        prerequisite_packages:
+        pre_packages:
           - epel-release
 
 In many cases, some services need to be started after package installation, just define them in:
@@ -42,18 +42,22 @@ In many cases, some services need to be started after package installation, just
         yum_repo_key_urls:
           - https://pkg.jenkins.io/redhat/jenkins.io.key
     
-        prerequisite_packages:
+        pre_packages:
           - epel-release
     
-        prerequisite_services: []
+        pre_services: []
     
-        scripts_after_pre_services_started:
+        scripts_after_pre_services:
           - dummy_1.sh
     
         to_be_installed_packages:
           - java-1.8.0-openjdk-devel
           - maven
           - docker
+    
+        configs_after_install:
+          - src: "{{ playbook_dir }}/local"
+            dest: "/tmp/gaol.package.test"
     
         started_services:
           - docker

@@ -9,18 +9,22 @@
     yum_repo_key_urls:
       - https://pkg.jenkins.io/redhat/jenkins.io.key
 
-    prerequisite_packages:
+    pre_packages:
       - epel-release
 
-    prerequisite_services: []
+    pre_services: []
 
-    scripts_after_pre_services_started:
+    scripts_after_pre_services:
       - dummy_1.sh
 
     to_be_installed_packages:
       - java-1.8.0-openjdk-devel
       - maven
       - docker
+
+    configs_after_install:
+      - src: "{{ playbook_dir }}/local"
+        dest: "/tmp/gaol.package.test"
 
     started_services:
       - docker
