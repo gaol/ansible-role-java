@@ -4,7 +4,7 @@ This Ansible role has very simple goal to just install defined packages
 
 In most common cases, only one variable needs to be defined:
 
-    to_be_installed_packages:
+    desired_packages:
       - java-1.8.0-openjdk-devel
       - maven
       - docker
@@ -50,7 +50,7 @@ In many cases, some services need to be started after package installation, just
         scripts_after_pre_services:
           - dummy_1.sh
     
-        to_be_installed_packages:
+        desired_packages:
           - java-1.8.0-openjdk-devel
           - maven
           - docker

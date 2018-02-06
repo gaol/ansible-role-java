@@ -14,23 +14,19 @@
 
     pre_services: []
 
-    scripts_after_pre_services:
-      - dummy_1.sh
+    scripts_after_pre_services: []
 
-    to_be_installed_packages:
+    desired_packages:
       - java-1.8.0-openjdk-devel
       - maven
-      - docker
+      - tomcat
 
-    configs_after_install:
-      - src: "{{ playbook_dir }}/local"
-        dest: "/tmp/gaol.package.test"
+    configs_after_install: []
 
     started_services:
-      - docker
+      - tomcat
 
-    scripts_after_services_started:
-      - dummy_2.sh
+    scripts_after_services_started: []
 
   roles:
-    - gaol.package
+    - role_under_test
